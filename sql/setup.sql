@@ -3,6 +3,7 @@
 
 drop table if exists dogs;
 drop table if exists snakes;
+drop table if exists candy;
 
 
 create table dogs (
@@ -19,6 +20,13 @@ create table snakes (
     is_danger_noodle boolean not null
 );
 
+create table candy (
+    id bigint generated always as identity primary key,
+    name varchar not null,
+    type varchar not null,
+    consistency varchar not null
+);
+
 insert into dogs (name, age, is_cool) values
 ('Sully', 4, true),
 ('Homer', 12, true),
@@ -31,3 +39,9 @@ insert into snakes (common_name, avg_lifespan, is_danger_noodle) values
 ('Ball Python', 26, false),
 ('King Cobra', 20, true);
 
+insert into candy (name, type, consistency) values
+('Jolly Ranchers', 'Sucker', 'Hard'),
+('Laffy Taffy', 'Taffy', 'Chewy'),
+('Albanese Gummy Bears', 'Gummy', 'Chewy'),
+('Cotton Candy', 'Special', 'Dissolvy'),
+('Life Savers Gummies', 'Gummy', 'Chewy');
