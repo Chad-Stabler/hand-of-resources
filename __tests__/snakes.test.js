@@ -31,6 +31,19 @@ describe('backend-express-template routes', () => {
       ...newSnake
     });
   });
+  it('put /snakes/:id should update a single snake', async () => {
+    const resp = await request(app).put('/snakes/1').send({ avg_lifespan: 200 });
+
+    expect(resp.status).toBe(200);
+    expect(resp.body.avg_lifespan).toBe(200);
+  });
+  it('delete snakes/id should remove a snake from the database', async () => {
+    const resp = await request(app).delete('/snakes/1');
+    expect(resp.status).toBe(200);
+
+    const newResp = await request(app).get('/snakes/1');
+    expect(newResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
