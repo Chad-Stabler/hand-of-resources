@@ -31,6 +31,12 @@ describe('backend-express-template routes', () => {
       ...newDog
     });
   });
+  it('put /dogs/:id should update a single dog', async () => {
+    const resp = await request(app).put('/dogs/1').send({ age: 2 });
+
+    expect(resp.status).toBe(200);
+    expect(resp.body.age).toBe(2);
+  });
   afterAll(() => {
     pool.end();
   });
