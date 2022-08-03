@@ -13,6 +13,11 @@ describe('backend-express-template routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.length).toEqual(4);
   });
+  it('get snakes/id should return a single snake datapoint', async () => {
+    const resp = await request(app).get('/snakes/1');
+
+    expect(resp.body).toHaveProperty('common_name', 'Garter Snake');
+  });
   afterAll(() => {
     pool.end();
   });
