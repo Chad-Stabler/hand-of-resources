@@ -13,6 +13,11 @@ describe('backend-express-template routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.length).toEqual(5);
   });
+  it('get candy/id should return a single candy datapoint', async () => {
+    const resp = await request(app).get('/candy/1');
+
+    expect(resp.body).toHaveProperty('name', 'Jolly Ranchers');
+  });
   afterAll(() => {
     pool.end();
   });
