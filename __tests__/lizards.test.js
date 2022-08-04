@@ -31,6 +31,12 @@ describe('backend-express-template routes', () => {
       ...newLiz
     });
   });
+  it('put /lizards/:id should update a single lizard', async () => {
+    const resp = await request(app).put('/lizards/1').send({ avg_size: '10^8 square nautical miles' });
+
+    expect(resp.status).toBe(200);
+    expect(resp.body.avg_size).toBe('10^8 square nautical miles');
+  });
   afterAll(() => {
     pool.end();
   });
