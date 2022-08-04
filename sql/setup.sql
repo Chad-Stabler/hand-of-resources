@@ -4,6 +4,7 @@
 drop table if exists dogs;
 drop table if exists snakes;
 drop table if exists candy;
+drop table if exists lizards;
 
 
 create table dogs (
@@ -27,6 +28,13 @@ create table candy (
     consistency varchar not null
 );
 
+create table lizards (
+    id bigint generated always as identity primary key,
+    name varchar not null,
+    avg_size varchar not null,
+    handleable boolean not null
+);
+
 insert into dogs (name, age, is_cool) values
 ('Sully', 4, true),
 ('Homer', 12, true),
@@ -45,3 +53,10 @@ insert into candy (name, type, consistency) values
 ('Albanese Gummy Bears', 'Gummy', 'Chewy'),
 ('Cotton Candy', 'Special', 'Dissolvy'),
 ('Life Savers Gummies', 'Gummy', 'Chewy');
+
+insert into lizards(name, avg_size, handleable) values
+('Bearded Dragon','16-24 inches' , true),
+('Komodo Dragon', '8.5 feet', false),
+('Bengal Monitor', '24-69 inches', false),
+('Common Basilisk', '2.5 feet', true);
+
