@@ -5,6 +5,7 @@ drop table if exists dogs;
 drop table if exists snakes;
 drop table if exists candy;
 drop table if exists lizards;
+drop table if exists fish;
 
 
 create table dogs (
@@ -35,6 +36,13 @@ create table lizards (
     handleable boolean not null
 );
 
+create table fish (
+    id bigint generated always as identity primary key,
+    name varchar not null,
+    size varchar not null,
+    catch_difficulty varchar not null
+);
+
 insert into dogs (name, age, is_cool) values
 ('Sully', 4, true),
 ('Homer', 12, true),
@@ -59,4 +67,10 @@ insert into lizards(name, avg_size, handleable) values
 ('Komodo Dragon', '8.5 feet', false),
 ('Bengal Monitor', '24-69 inches', false),
 ('Common Basilisk', '2.5 feet', true);
+
+insert into fish (name, size, catch_difficulty) values 
+('Largemouth Bass', '16-24 Inches', 'Easy'),
+('Goliath Grouper', '8.2 feet', 'Extreme'),
+('Blue marlin', '12+ feet', 'Extreme'),
+('Blue Catfish', '1-5 feet', 'Medium');
 
