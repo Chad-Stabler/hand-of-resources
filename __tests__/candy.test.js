@@ -37,6 +37,13 @@ describe('backend-express-template routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.type).toBe('Popper');
   });
+  it('delete candy/id should remove a candy from the database', async () => {
+    const resp = await request(app).delete('/candy/1');
+    expect(resp.status).toBe(200);
+
+    const newResp = await request(app).get('/candy/1');
+    expect(newResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
