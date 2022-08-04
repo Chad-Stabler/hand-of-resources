@@ -31,6 +31,12 @@ describe('backend-express-template routes', () => {
       ...newFish
     });
   });
+  it('put /fishes/:id should update a single fish', async () => {
+    const resp = await request(app).put('/fishes/1').send({ size: '4 feet' });
+
+    expect(resp.status).toBe(200);
+    expect(resp.body.size).toBe('4 feet');
+  });
   afterAll(() => {
     pool.end();
   });
