@@ -31,6 +31,12 @@ describe('backend-express-template routes', () => {
       ...newCandy
     });
   });
+  it('put /candy/:id should update a single candy', async () => {
+    const resp = await request(app).put('/candy/1').send({ type: 'Popper' });
+
+    expect(resp.status).toBe(200);
+    expect(resp.body.type).toBe('Popper');
+  });
   afterAll(() => {
     pool.end();
   });
