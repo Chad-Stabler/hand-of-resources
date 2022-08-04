@@ -37,6 +37,13 @@ describe('backend-express-template routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.size).toBe('4 feet');
   });
+  it('delete fishes/id should remove a fish from the database', async () => {
+    const resp = await request(app).delete('/fishes/3');
+    expect(resp.status).toBe(200);
+
+    const newResp = await request(app).get('/fishes/3');
+    expect(newResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
