@@ -18,6 +18,19 @@ describe('backend-express-template routes', () => {
 
     expect(resp.body).toHaveProperty('name', 'Bearded Dragon');
   });
+  it('post /lizards should insert a new lizard into the database', async () => {
+    const newLiz = {
+      name: 'Snakeheaded Jimmy',
+      avg_size: '26 feet',
+      handleable: false
+    };
+    const resp = await request(app).post('/lizards').send(newLiz);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newLiz
+    });
+  });
   afterAll(() => {
     pool.end();
   });
